@@ -3,583 +3,361 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GrowthSite Lab — Websites That Drive Business Growth</title>
-  <meta name="description" content="AI-powered websites for beauty businesses. Professional research + LeadForge AI generation + quality check = websites that actually generate leads.">
-  <meta property="og:title" content="GrowthSite Lab — Websites That Drive Business Growth">
-  <meta property="og:description" content="We build websites that drive business growth. AI-powered. Research-first. Quality guaranteed.">
-  <meta property="og:url" content="https://risesitelab.com">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_EU">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='50%25' y='68%25' text-anchor='middle' font-family='Inter,sans-serif' font-weight='800' font-size='13' fill='%23FFD700'>GL</text></svg>">
+  <meta name="description" content="GrowthSite Lab — Premium website development for the beauty industry. We build high-converting landing pages for salons, nail bars, and spas. Powered by LeadForge AI.">
+  <title>GrowthSite Lab — Websites That Drive Beauty Business Growth</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* БАЗОВЫЕ СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (ЗАМЕНА СТАРОГО CSS) */
+    :root { --primary: #111111; --accent: #B08F5A; --bg-light: #F8F9FA; --text-main: #333333; --text-muted: #666666; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* HEADER */
+    .site-header { padding: 20px 0; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100; }
+    .header__inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; text-decoration: none; color: var(--primary); }
+    .logo span { color: var(--accent); }
+    .nav__list { list-style: none; display: flex; gap: 32px; }
+    .nav__list a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 15px; transition: color 0.3s; }
+    .nav__list a:hover { color: var(--accent); }
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; border: none; cursor: pointer; }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { background: #9a7d4e; }
+    .btn--outline { border: 1px solid #ddd; color: var(--primary); background: transparent; }
+    .btn--outline:hover { border-color: var(--primary); }
+    .burger { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+
+    /* HERO */
+    .hero { padding: 100px 0 60px; text-align: center; background: var(--bg-light); }
+    .hero__badge { display: inline-block; padding: 6px 16px; background: #fff; border: 1px solid #ddd; border-radius: 50px; font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.2; margin-bottom: 24px; color: var(--primary); }
+    .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
+    .hero__ctas { display: flex; gap: 16px; justify-content: center; }
+    .hero__stats { display: flex; justify-content: center; gap: 60px; margin-top: 60px; padding-top: 40px; border-top: 1px solid #ddd; }
+    .hero__stat-value { display: block; font-size: 32px; font-weight: 700; color: var(--primary); }
+    .hero__stat-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* SECTION COMMONS */
+    .section { padding: 100px 0; }
+    .section-label { text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 24px; color: var(--primary); }
+
+    /* PORTFOLIO - КЛЮЧЕВОЕ ИЗМЕНЕНИЕ */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+    .portfolio-card { display: block; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); text-decoration: none; color: var(--text-main); transition: transform 0.4s, box-shadow 0.4s; border: 1px solid #eee; }
+    .portfolio-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .portfolio-card__img { width: 100%; height: 260px; object-fit: cover; display: block; }
+    .portfolio-card__content { padding: 24px; border-top: 1px solid #eee; }
+    .portfolio-card__tag { font-size: 13px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .portfolio-card__name { font-size: 20px; font-weight: 700; margin: 8px 0; }
+    .portfolio-card__link { font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .portfolio-card:hover .portfolio-card__link { color: var(--accent); }
+
+    /* PROCESS */
+    .process { background: var(--primary); color: #fff; }
+    .process .section-title { color: #fff; }
+    .process .section-label { color: #ccc; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
+    .process-step h3 { font-size: 18px; margin: 16px 0 8px; }
+    .process-step p { font-size: 14px; color: #aaa; line-height: 1.6; }
+    .process-num { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--accent); opacity: 0.5; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; align-items: start; }
+    .pricing-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 40px 30px; text-align: center; }
+    .pricing-card.featured { border: 2px solid var(--accent); position: relative; transform: scale(1.05); }
+    .pricing-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 4px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; }
+    .pricing-name { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+    .pricing-price { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+    .pricing-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; }
+    .pricing-features { list-style: none; text-align: left; margin-bottom: 30px; }
+    .pricing-features li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; display: flex; align-items: center; }
+    .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 12px; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
+    .form-field { margin-bottom: 20px; }
+    .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .form-field input, .form-field select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+    .contact-info p { color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
+
+    /* FOOTER */
+    .footer { background: #111; color: #fff; padding: 60px 0 30px; text-align: center; }
+    .footer a { color: #fff; text-decoration: none; }
+    .footer__nav { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 30px 0; }
+    .footer__copy { font-size: 14px; color: #777; }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .portfolio-grid, .process-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav__list { display: none; }
+      .burger { display: block; }
+      .hero h1 { font-size: 36px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ============================================================
-       HEADER
-  ============================================================ -->
-  <header class="header" id="header">
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
     <div class="container header__inner">
-      <a href="#hero" class="logo" aria-label="GrowthSite Lab — Home">
-        <span class="logo__text">GrowthSite<span class="logo__accent">Lab</span></span>
-      </a>
-      <nav class="nav" id="nav" aria-label="Main navigation">
+      <a href="#" class="logo">GrowthSite<span>Lab</span></a>
+      <nav aria-label="Primary navigation">
         <ul class="nav__list">
-          <li><a href="#about"     class="nav__link">About</a></li>
-          <li><a href="#services"  class="nav__link">Services</a></li>
-          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
-          <li><a href="#process"   class="nav__link">Process</a></li>
-          <li><a href="#contact"   class="nav__link nav__cta">Contact Us</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
         </ul>
       </nav>
-      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#contact" class="btn btn--primary">Contact Us</a>
+      <button class="burger" aria-label="Menu">☰</button>
     </div>
   </header>
 
-  <!-- ============================================================
-       HERO
-  ============================================================ -->
-  <section class="hero" id="hero">
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <span class="hero__badge">Powered by LeadForge AI</span>
-        <h1 class="hero__title">
-          Websites That Drive<br>
-          <span class="text-gold">Business Growth</span>
-        </h1>
-        <p class="hero__subtitle">
-          We find beauty businesses losing clients due to poor websites, build them a new one,
-          and deliver a ready-made solution for lead growth.
-        </p>
-        <div class="hero__actions">
-          <a href="#contact"   class="btn btn--primary">Order Website</a>
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero__badge">POWERED BY LEADFORGE AI</span>
+        <h1>Websites That Drive Beauty Business Growth</h1>
+        <p>We solve the core problem of beauty websites: poor design that loses clients. We build high-converting sites based on deep niche research.</p>
+        <div class="hero__ctas">
+          <a href="#contact" class="btn btn--primary">Order Website</a>
           <a href="#portfolio" class="btn btn--outline">View Portfolio</a>
         </div>
         <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__number">48h</span>
-            <span class="stat__label">Delivery Time</span>
+          <div class="hero__stat">
+            <span class="hero__stat-value">48h</span>
+            <span class="hero__stat-label">Delivery Time</span>
           </div>
-          <div class="stat">
-            <span class="stat__number">3×</span>
-            <span class="stat__label">More Leads</span>
+          <div class="hero__stat">
+            <span class="hero__stat-value">3×</span>
+            <span class="hero__stat-label">More Leads</span>
           </div>
-          <div class="stat">
-            <span class="stat__number">100%</span>
-            <span class="stat__label">Quality Check</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       ABOUT
-  ============================================================ -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">About Us</span>
-        <h2 class="section__title">Built for One Purpose:<br>Your <span class="text-gold">Lead Growth</span></h2>
-      </div>
-      <div class="about__grid">
-        <div class="about__text reveal">
-          <p class="about__lead">
-            We are AI automation specialists focused exclusively on the beauty industry.
-            Our system — LeadForge AI — analyzes, builds, and delivers websites that
-            convert visitors into paying clients.
-          </p>
-          <div class="about__values">
-            <div class="value-item">
-              <span class="value-item__icon">◈</span>
-              <div>
-                <strong>Quality Guaranteed</strong>
-                <p>Every website is personally reviewed before delivery. We never ship work we wouldn't show ourselves.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <span class="value-item__icon">◈</span>
-              <div>
-                <strong>Results, Not Just Development</strong>
-                <p>We sell ready-made lead growth — not templates, not code. An actual tool for growing your business.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <span class="value-item__icon">◈</span>
-              <div>
-                <strong>No Spam. Ever.</strong>
-                <p>Professional research only. We reach out when we know we can genuinely help — not with mass campaigns.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="about__tech reveal reveal-delay-2">
-          <div class="tech-card">
-            <div class="tech-card__header">
-              <span class="tech-card__icon">⚡</span>
-              <h3>LeadForge AI</h3>
-            </div>
-            <p>Our proprietary AI system that powers every website we build.</p>
-            <ul class="tech-card__list">
-              <li>Identifies businesses losing leads due to poor web presence</li>
-              <li>Analyzes competitors and target audience in depth</li>
-              <li>Generates conversion-optimized websites tailored to your niche</li>
-              <li>Ensures quality through automated + human review pipeline</li>
-            </ul>
+          <div class="hero__stat">
+            <span class="hero__stat-value">100%</span>
+            <span class="hero__stat-label">Quality Check</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-       SERVICES
-  ============================================================ -->
-  <section class="section services" id="services">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Services</span>
-        <h2 class="section__title">Choose Your <span class="text-gold">Growth Plan</span></h2>
-        <p class="section__subtitle">Every plan includes professional research, custom design, and quality review. No templates. No shortcuts.</p>
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+      <div class="container" style="max-width: 800px; text-align: center;">
+        <span class="section-label">Built for One Purpose</span>
+        <h2 class="section-title">Your Lead Growth</h2>
+        <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 40px;">
+          GrowthSite Lab is an AI-driven system that identifies businesses losing clients due to poor web presence, analyzes their competitors, and builds conversion-optimized websites tailored specifically for the beauty industry.
+        </p>
+        <ul style="list-style: none; text-align: left; max-width: 600px; margin: 0 auto;">
+          <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
+            <span style="color: var(--accent); font-weight: bold;">✓</span>
+            <span><strong>Quality Guaranteed:</strong> Every site passes a personal design and structure audit before delivery.</span>
+          </li>
+          <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
+            <span style="color: var(--accent); font-weight: bold;">✓</span>
+            <span><strong>Results, Not Just Development:</strong> We focus on user experience and conversion, not just code.</span>
+          </li>
+          <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
+            <span style="color: var(--accent); font-weight: bold;">✓</span>
+            <span><strong>No Spam. Ever.</strong> Professional research only. We do not do mass mailings.</span>
+          </li>
+        </ul>
       </div>
-      <div class="services__grid">
+    </section>
 
-        <!-- Card: Start -->
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-card__header">
-            <span class="service-card__tag">Start</span>
-            <div class="service-card__price">
-              <span class="price__amount">€300</span>
-              <span class="price__range">– €500</span>
-            </div>
-            <h3>Landing "Start"</h3>
-            <p>Perfect for small businesses getting online for the first time.</p>
-          </div>
-          <ul class="service-card__features">
-            <li>One-page responsive website</li>
-            <li>Contact form (Telegram / WhatsApp / Email)</li>
-            <li>Mobile-optimized design</li>
-            <li>Fast loading (&lt;2 seconds)</li>
-            <li>Professional research included</li>
-            <li>Quality review before delivery</li>
-          </ul>
-          <a href="#contact" class="btn btn--border btn--full">Get Started</a>
-        </div>
-
-        <!-- Card: Business (featured) -->
-        <div class="service-card service-card--featured reveal reveal-delay-2">
-          <div class="service-card__badge">Most Popular</div>
-          <div class="service-card__header">
-            <span class="service-card__tag">Business</span>
-            <div class="service-card__price">
-              <span class="price__amount">€800</span>
-              <span class="price__range">– €1,500</span>
-            </div>
-            <h3>Landing "Business"</h3>
-            <p>Ideal for established businesses needing a professional online presence.</p>
-          </div>
-          <ul class="service-card__features">
-            <li>Multi-page website with blog</li>
-            <li>SEO optimization included</li>
-            <li>Custom design system</li>
-            <li>Analytics integration</li>
-            <li>Everything in Start plan</li>
-            <li>Priority delivery</li>
-          </ul>
-          <a href="#contact" class="btn btn--primary btn--full">Get Started</a>
-        </div>
-
-        <!-- Card: Growth -->
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-card__header">
-            <span class="service-card__tag">Growth</span>
-            <div class="service-card__price">
-              <span class="price__amount">€50</span>
-              <span class="price__range">– €150/mo</span>
-            </div>
-            <h3>Subscription "Growth"</h3>
-            <p>Full-service solution with ongoing support and continuous improvement.</p>
-          </div>
-          <ul class="service-card__features">
-            <li>Everything in Business plan</li>
-            <li>Hosting included</li>
-            <li>Monthly updates</li>
-            <li>Continuous SEO</li>
-            <li>Priority support</li>
-            <li>Performance monitoring</li>
-          </ul>
-          <a href="#contact" class="btn btn--border btn--full">Get Started</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       PORTFOLIO
-  ============================================================ -->
-  <section class="section portfolio" id="portfolio">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Portfolio</span>
-        <h2 class="section__title">Real Websites.<br><span class="text-gold">Real Results.</span></h2>
-        <p class="section__subtitle">Browse our demo projects built for beauty businesses across Europe.</p>
-      </div>
-      <div class="portfolio__grid">
-
-        <div class="portfolio-card reveal reveal-delay-1">
-          <div class="portfolio-card__preview portfolio-card__preview--1">
-            <div class="portfolio-card__overlay">
-              <span>Hair Salon</span>
-            </div>
-          </div>
-          <div class="portfolio-card__info">
-            <span class="portfolio-card__niche">Hair Salon · Barcelona</span>
-            <h3>Beauty Salon Barcelona</h3>
-            <p>Full rebrand with new website. Focus on online booking and service showcase.</p>
-            <a href="https://beauty-salon.risesitelab.com" target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-              View Demo <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="portfolio-card reveal reveal-delay-2">
-          <div class="portfolio-card__preview portfolio-card__preview--2">
-            <div class="portfolio-card__overlay">
-              <span>Nail Studio</span>
-            </div>
-          </div>
-          <div class="portfolio-card__info">
-            <span class="portfolio-card__niche">Nail Salon · Madrid</span>
-            <h3>Nail Studio Madrid</h3>
-            <p>Lead generation landing focused on new client acquisition and gallery showcase.</p>
-            <a href="https://nail-studio.risesitelab.com" target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-              View Demo <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="portfolio-card reveal reveal-delay-3">
-          <div class="portfolio-card__preview portfolio-card__preview--3">
-            <div class="portfolio-card__overlay">
-              <span>Dental Pro</span>
-            </div>
-          </div>
-          <div class="portfolio-card__info">
-            <span class="portfolio-card__niche">Dentistry · Valencia</span>
-            <h3>Dental Pro Valencia</h3>
-            <p>Professional medical website with appointment booking and service pricing.</p>
-            <a href="https://dental-pro.risesitelab.com" target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-              View Demo <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       PROCESS
-  ============================================================ -->
-  <section class="section process" id="process">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Our Process</span>
-        <h2 class="section__title">From Brief to Live Website<br>in <span class="text-gold">5 Steps</span></h2>
-      </div>
-      <div class="process__steps">
-
-        <div class="process-step reveal">
-          <div class="process-step__number">01</div>
-          <div class="process-step__content">
-            <h3>Research <span class="text-gold">(50% of the work)</span></h3>
-            <p>We analyze your business, competitors, and target audience. This is where we build the foundation for a website that actually converts — not just one that looks good.</p>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step__number">02</div>
-          <div class="process-step__content">
-            <h3>Audit</h3>
-            <p>We identify exactly where your current website is losing potential clients and what's preventing visitors from taking action.</p>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step__number">03</div>
-          <div class="process-step__content">
-            <h3>Generation</h3>
-            <p>LeadForge AI creates a completely new website tailored to your business, audience, and conversion goals. Every element is intentional — nothing is generic.</p>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step__number">04</div>
-          <div class="process-step__content">
-            <h3>Quality Check</h3>
-            <p>Every website undergoes a personal review before it's ever shown to a client. We test functionality, responsiveness, and conversion elements across all devices.</p>
-          </div>
-        </div>
-
-        <div class="process-step reveal">
-          <div class="process-step__number">05</div>
-          <div class="process-step__content">
-            <h3>Delivery</h3>
-            <p>You receive a ready-made solution designed to generate leads from day one — with documentation, post-delivery support, and a team that stays available.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       CONTACT
-  ============================================================ -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Contact</span>
-        <h2 class="section__title">Ready to Grow?<br><span class="text-gold">Let's Talk.</span></h2>
-        <p class="section__subtitle">We typically respond within 24 hours.</p>
-      </div>
-      <div class="contact__grid">
-
-        <div class="contact__info reveal">
-          <a href="mailto:hello@risesitelab.com" class="contact-item">
-            <span class="contact-item__icon" aria-hidden="true">✉</span>
-            <div>
-              <strong>Email</strong>
-              <span>hello@risesitelab.com</span>
-            </div>
-          </a>
-          <a href="https://t.me/GrowthSite_Lab" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <span class="contact-item__icon" aria-hidden="true">✈</span>
-            <div>
-              <strong>Telegram</strong>
-              <span>@GrowthSite_Lab</span>
-            </div>
-          </a>
-          <a href="https://wa.me/32471725086" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <span class="contact-item__icon" aria-hidden="true">◎</span>
-            <div>
-              <strong>WhatsApp</strong>
-              <span>+32 471 72 50 86</span>
-            </div>
-          </a>
-          <div class="contact__promise">
-            <p>No spam. No pressure. Just a professional conversation about how we can help your business grow.</p>
-          </div>
-        </div>
-
-        <form class="contact-form reveal reveal-delay-2" id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full Name <span class="required" aria-hidden="true">*</span></label>
-              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
-              <span class="form-error" id="nameError" role="alert"></span>
-            </div>
-            <div class="form-group">
-              <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
-              <span class="form-error" id="emailError" role="alert"></span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone <span class="required" aria-hidden="true">*</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="+32 471 00 00 00" required autocomplete="tel">
-              <span class="form-error" id="phoneError" role="alert"></span>
-            </div>
-            <div class="form-group">
-              <label for="company">Company Name</label>
-              <input type="text" id="company" name="company" placeholder="Your business (optional)" autocomplete="organization">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" placeholder="Tell us about your business and what you need..." rows="4" required></textarea>
-            <span class="form-error" id="messageError" role="alert"></span>
-          </div>
-          <!-- EU Work Commencement Confirmation -->
-          <fieldset class="form-consent">
-            <legend>Work Commencement Confirmation</legend>
-            <div class="consent-row">
-              <input type="checkbox" id="workConsent" name="work_commencement" required>
-              <label for="workConsent" class="consent-text">
-                <strong>I confirm that I want GrowthSite Lab to start work immediately after payment.</strong>
-              </label>
-            </div>
-            <p class="small-text">
-              I understand that under EU Consumer Rights Directive 2011/83/EU,
-              I have the right to withdraw within 14 days, but I <strong>explicitly waive</strong> this right
-              because I request immediate work commencement.
-            </p>
-            <p class="small-text">
-              I have read and agree to the
-              <a href="terms.html" target="_blank">Terms of Service</a>,
-              <a href="refund.html" target="_blank">Refund Policy</a>, and
-              <a href="privacy.html" target="_blank">Privacy Policy</a>.
-            </p>
-            <span class="form-error" id="workConsentError" role="alert"></span>
-          </fieldset>
-          <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
-            Proceed to Payment (Stripe)
-          </button>
-          <div class="form-feedback form-feedback--success" id="formSuccess" role="status" aria-live="polite">
-            Thank you! We will contact you within 24 hours.
-          </div>
-          <div class="form-feedback form-feedback--error" id="formErrorGlobal" role="alert">
-            Something went wrong. Please try again or contact us directly.
-          </div>
-        </form>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       COMPANY RULES
-  ============================================================ -->
-  <section class="section rules" id="rules">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Company Rules</span>
-        <h2 class="section__title">How We <span class="text-gold">Operate</span></h2>
-      </div>
-      <div class="rules__grid">
-        <div class="rule-card reveal reveal-delay-1">
-          <span class="rule-card__number">01</span>
-          <h3>Quality First</h3>
-          <p>Every project undergoes personal quality check before delivery. We never send work we wouldn't show ourselves.</p>
-        </div>
-        <div class="rule-card reveal reveal-delay-2">
-          <span class="rule-card__number">02</span>
-          <h3>Honesty &amp; Transparency</h3>
-          <p>No mass email campaigns. Professional research only. Clear pricing with no hidden fees.</p>
-        </div>
-        <div class="rule-card reveal reveal-delay-3">
-          <span class="rule-card__number">03</span>
-          <h3>Respect for Clients</h3>
-          <p>We never push our services. We offer solutions that are truly needed. Always available for communication.</p>
-        </div>
-        <div class="rule-card reveal reveal-delay-1">
-          <span class="rule-card__number">04</span>
-          <h3>Results</h3>
-          <p>We sell ready-made lead growth, not just development. Quality guarantee. Post-delivery support included.</p>
-        </div>
-        <div class="rule-card reveal reveal-delay-2">
-          <span class="rule-card__number">05</span>
-          <h3>Confidentiality</h3>
-          <p>We never disclose client data. We don't use others' projects without permission. Data security is our priority.</p>
-        </div>
-        <div class="rule-card reveal reveal-delay-3">
-          <span class="rule-card__number">06</span>
-          <h3>Continuous Improvement</h3>
-          <p>We follow AI and web development trends. We constantly improve our processes and learn from every project.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       PRIVACY POLICY
-  ============================================================ -->
-  <section class="section privacy" id="privacy">
-    <div class="container">
-      <div class="section__header reveal">
-        <span class="section__label">Legal</span>
-        <h2 class="section__title">Privacy <span class="text-gold">Policy</span></h2>
-      </div>
-      <div class="privacy__content reveal">
-
-        <div class="privacy__block">
-          <h3>1. General Provisions</h3>
-          <p>This Privacy Policy describes how GrowthSite Lab ("Company", "we", "us", "our") collects, uses, and protects information received from users when using the website risesitelab.com ("Site").</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>2. What Information We Collect</h3>
-          <p><strong>Information you provide voluntarily:</strong> first and last name, email address, phone number, company name, messages via contact form.</p>
-          <p><strong>Automatically collected information:</strong> IP address, browser type and device, pages you visit, date and time of visit, referral source.</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>3. How We Use Your Information</h3>
-          <p>We use your data to respond to inquiries and consultations, deliver ordered services, analyze and improve the site, and — only with your explicit consent — inform you about new services.</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>4. Data Sharing with Third Parties</h3>
-          <p>We do not sell or share your personal data with third parties, except when necessary for service delivery (hosting, payment systems), required by law, or with your explicit consent.</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>5. Data Storage and Protection</h3>
-          <p>All data is stored on secure servers. We use SSL encryption. Access to data is limited to authorized personnel only.</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>6. Your Rights</h3>
-          <p>You have the right to: know what data we hold about you; request correction or deletion of your data; withdraw consent for data processing; file a complaint with regulatory authorities.</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>7. Cookies</h3>
-          <p>We use cookies to improve site functionality. You can disable cookies in your browser settings at any time.</p>
-        </div>
-
-        <div class="privacy__block">
-          <h3>8. Contact for Privacy Inquiries</h3>
-          <p>Email: <a href="mailto:privacy@risesitelab.com">privacy@risesitelab.com</a> &nbsp;|&nbsp; Telegram: <a href="https://t.me/GrowthSite_Lab" target="_blank" rel="noopener">@GrowthSite_Lab</a></p>
-          <p><em>Last Updated: April 2, 2026</em></p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="#hero" class="logo" aria-label="GrowthSite Lab — Top">
-          <span class="logo__text">GrowthSite<span class="logo__accent">Lab</span></span>
-        </a>
-        <p class="footer__tagline">Powered by LeadForge AI</p>
-      </div>
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#process">Process</a>
-        <a href="#rules">Company Rules</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="refund.html">Refund Policy</a>
-        <a href="#contact">Contact Us</a>
-      </nav>
-      <div class="footer__contact">
-        <a href="mailto:hello@risesitelab.com">hello@risesitelab.com</a>
-        <a href="https://t.me/GrowthSite_Lab" target="_blank" rel="noopener">@GrowthSite_Lab</a>
-        <a href="https://wa.me/32471725086" target="_blank" rel="noopener">+32 471 72 50 86</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
+    <!-- ===== PORTFOLIO (ОБНОВЛЕН БЛОК) ===== -->
+    <section id="portfolio" class="section" style="background: var(--bg-light);">
       <div class="container">
-        <p>© 2026 GrowthSite Lab. All rights reserved. Powered by LeadForge AI.</p>
+        <div style="text-align: center;">
+          <span class="section-label">Our Work</span>
+          <h2 class="section-title">Real Websites. Real Results.</h2>
+          <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Live demo projects created for the beauty niche. Click to view the full interactive experience.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          
+          <!-- Карточка 1: Aurora Beauty Lounge -->
+          <a href="https://aurora-beauty-lounge.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop" alt="Aurora Beauty Lounge Website Preview" class="portfolio-card__img">
+            <div class="portfolio-card__content">
+              <span class="portfolio-card__tag">Cosmetology · Florence</span>
+              <h3 class="portfolio-card__name">Aurora Beauty Lounge</h3>
+              <span class="portfolio-card__link">View Live Demo →</span>
+            </div>
+          </a>
+
+          <!-- Карточка 2: Velvet Nail Bar -->
+          <a href="https://velvet-nail-bar.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop" alt="Velvet Nail Bar Website Preview" class="portfolio-card__img">
+            <div class="portfolio-card__content">
+              <span class="portfolio-card__tag">Nail Studio · Amsterdam</span>
+              <h3 class="portfolio-card__name">Velvet Nail Bar</h3>
+              <span class="portfolio-card__link">View Live Demo →</span>
+            </div>
+          </a>
+
+          <!-- Карточка 3: Muse Studio Hair -->
+          <a href="https://muse-studio-hair.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=800&auto=format&fit=crop" alt="Muse Studio Hair Website Preview" class="portfolio-card__img">
+            <div class="portfolio-card__content">
+              <span class="portfolio-card__tag">Hair Salon · Barcelona</span>
+              <h3 class="portfolio-card__name">Muse Studio Hair</h3>
+              <span class="portfolio-card__link">View Live Demo →</span>
+            </div>
+          </a>
+
+        </div>
       </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section id="process" class="section process">
+      <div class="container">
+        <div style="text-align: center;">
+          <span class="section-label">Our Approach</span>
+          <h2 class="section-title">From Brief to Live Website</h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-step" style="text-align: center;">
+            <span class="process-num">01</span>
+            <h3>Research & Audit</h3>
+            <p>50% of our work. Analyzing the client's niche, competitors, and target audience to build a foundation.</p>
+          </div>
+          <div class="process-step" style="text-align: center;">
+            <span class="process-num">02</span>
+            <h3>Architecture</h3>
+            <p>Creating a conversion-optimized structure. Mapping out sections, user flow, and content strategy.</p>
+          </div>
+          <div class="process-step" style="text-align: center;">
+            <span class="process-num">03</span>
+            <h3>Development</h3>
+            <p>Writing clean, fast HTML/CSS/JS code. Mobile-first design with premium typography.</p>
+          </div>
+          <div class="process-step" style="text-align: center;">
+            <span class="process-num">04</span>
+            <h3>Quality Check</h3>
+            <p>Personal review of design, mobile version, and texts. No AI-generated filler passes our check.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div style="text-align: center;">
+          <span class="section-label">Investment</span>
+          <h2 class="section-title">Choose Your Growth Plan</h2>
+        </div>
+        <div class="pricing-grid">
+          
+          <article class="pricing-card">
+            <h3 class="pricing-name">START</h3>
+            <div class="pricing-price">€300 - €500</div>
+            <p class="pricing-desc">Perfect for small businesses needing a strong first online presence.</p>
+            <ul class="pricing-features">
+              <li>One-page landing site</li>
+              <li>Mobile-responsive design</li>
+              <li>Basic SEO setup</li>
+              <li>Delivery in 48 hours</li>
+            </ul>
+            <a href="#contact" class="btn btn--outline" style="width: 100%;">Get Started</a>
+          </article>
+
+          <article class="pricing-card featured">
+            <h3 class="pricing-name">BUSINESS</h3>
+            <div class="pricing-price">€800 - €1,500</div>
+            <p class="pricing-desc">For established salons looking to dominate local search and convert visitors.</p>
+            <ul class="pricing-features">
+              <li>Multi-section premium site</li>
+              <li>Advanced UI/UX design</li>
+              <li>Booking form integration</li>
+              <li>Performance optimization</li>
+            </ul>
+            <a href="#contact" class="btn btn--primary" style="width: 100%;">Get Started</a>
+          </article>
+
+          <article class="pricing-card">
+            <h3 class="pricing-name">GROWTH</h3>
+            <div class="pricing-price">€50 - €150<span style="font-size:16px; color:var(--text-muted);">/mo</span></div>
+            <p class="pricing-desc">Subscription model. We build, host, and continuously update your site.</p>
+            <ul class="pricing-features">
+              <li>Premium site creation</li>
+              <li>Cloudflare hosting included</li>
+              <li>Monthly text/visual updates</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="#contact" class="btn btn--outline" style="width: 100%;">Get Started</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">Ready to Grow?</h2>
+            <p>Send us a brief about your business, and we will get back to you within 24 hours with a preliminary analysis and proposal.</p>
+            <p><strong>Email:</strong> hello@risesitelab.com<br>
+            <strong>Telegram:</strong> @GrowthSite_Lab<br>
+            <strong>WhatsApp:</strong> +32 471 72 50 86</p>
+            <p style="font-size: 14px; color: #999; margin-top: 30px;">No spam. No pressure. Just a professional conversation about how we can help your business grow.</p>
+          </div>
+          <div>
+            <form>
+              <div class="form-field">
+                <label>Your Name</label>
+                <input type="text" placeholder="John Doe" required>
+              </div>
+              <div class="form-field">
+                <label>Email Address</label>
+                <input type="email" placeholder="john@example.com" required>
+              </div>
+              <div class="form-field">
+                <label>Website URL (if exists)</label>
+                <input type="url" placeholder="https://yoursite.com">
+              </div>
+              <div class="form-field">
+                <label>Tell us about your business</label>
+                <input type="text" placeholder="e.g. Nail salon in Berlin, 3 masters">
+              </div>
+              <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 10px;">Send Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="logo" style="font-size: 28px; display: inline-block; margin-bottom: 10px;">GrowthSite<span>Lab</span></a>
+      <p style="color: #888; margin-bottom: 30px;">LeadForge AI Technology</p>
+      <ul class="footer__nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="footer__copy">© 2024 GrowthSite Lab. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
 </body>
 </html>
