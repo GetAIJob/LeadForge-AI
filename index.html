@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   
   <style>
-    /* БАЗОВЫЕ СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (ЗАМЕНА СТАРОГО CSS) */
+    /* БАЗОВЫЕ СТИЛИ */
     :root { --primary: #111111; --accent: #B08F5A; --bg-light: #F8F9FA; --text-main: #333333; --text-muted: #666666; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background: #fff; }
@@ -47,7 +47,7 @@
     .section-label { text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
     .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 24px; color: var(--primary); }
 
-    /* PORTFOLIO - КЛЮЧЕВОЕ ИЗМЕНЕНИЕ */
+    /* PORTFOLIO */
     .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
     .portfolio-card { display: block; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); text-decoration: none; color: var(--text-main); transition: transform 0.4s, box-shadow 0.4s; border: 1px solid #eee; }
     .portfolio-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
@@ -79,17 +79,32 @@
     .pricing-features li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; display: flex; align-items: center; }
     .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 12px; }
 
-    /* CONTACT */
+    /* CONTACT & LEGAL FORM STYLES */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .form-field { margin-bottom: 20px; }
-    .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-    .form-field input, .form-field select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+    .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text-main); }
+    .form-field input, .form-field textarea { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; font-family: 'Inter', sans-serif; }
+    .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); }
     .contact-info p { color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
+    
+    /* EU Consent Styles */
+    fieldset.form-consent { border: 1px solid #eee; padding: 20px; border-radius: 6px; margin-bottom: 20px; }
+    legend { font-weight: 700; font-size: 14px; padding: 0 10px; color: var(--primary); }
+    .consent-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+    .consent-row input { width: 20px; height: 20px; margin-top: 2px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
+    .small-text { font-size: 13px; color: #888; margin-bottom: 12px; line-height: 1.5; }
+    .small-text a { color: var(--accent); text-decoration: underline; }
+    .form-error { color: #d32f2f; font-size: 13px; display: block; margin-top: 4px; }
+    .form-feedback { margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; display: none; }
+    .form-feedback--success { background: #e8f5e9; color: #2e7d32; }
+    .form-feedback--error { background: #ffebee; color: #c62828; }
 
     /* FOOTER */
     .footer { background: #111; color: #fff; padding: 60px 0 30px; text-align: center; }
-    .footer a { color: #fff; text-decoration: none; }
-    .footer__nav { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 30px 0; }
+    .footer a { color: #fff; text-decoration: none; transition: color 0.3s; }
+    .footer a:hover { color: var(--accent); }
+    .footer__nav { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
     .footer__copy { font-size: 14px; color: #777; }
 
     /* RESPONSIVE */
@@ -97,6 +112,7 @@
       .portfolio-grid, .process-grid, .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card.featured { transform: none; }
       .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
       .nav__list { display: none; }
       .burger { display: block; }
       .hero h1 { font-size: 36px; }
@@ -175,7 +191,7 @@
       </div>
     </section>
 
-    <!-- ===== PORTFOLIO (ОБНОВЛЕН БЛОК) ===== -->
+    <!-- ===== PORTFOLIO (ПОЛНОСТЬЮ СКОПИРОВАН) ===== -->
     <section id="portfolio" class="section" style="background: var(--bg-light);">
       <div class="container">
         <div style="text-align: center;">
@@ -186,7 +202,6 @@
 
         <div class="portfolio-grid">
           
-          <!-- Карточка 1: Aurora Beauty Lounge -->
           <a href="https://aurora-beauty-lounge.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
             <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop" alt="Aurora Beauty Lounge Website Preview" class="portfolio-card__img">
             <div class="portfolio-card__content">
@@ -196,7 +211,6 @@
             </div>
           </a>
 
-          <!-- Карточка 2: Velvet Nail Bar -->
           <a href="https://velvet-nail-bar.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
             <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop" alt="Velvet Nail Bar Website Preview" class="portfolio-card__img">
             <div class="portfolio-card__content">
@@ -206,7 +220,6 @@
             </div>
           </a>
 
-          <!-- Карточка 3: Muse Studio Hair -->
           <a href="https://muse-studio-hair.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
             <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=800&auto=format&fit=crop" alt="Muse Studio Hair Website Preview" class="portfolio-card__img">
             <div class="portfolio-card__content">
@@ -304,38 +317,84 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
+    <!-- ===== CONTACT (С ЮРИДИЧЕСКОЙ ФОРМОЙ ДЛЯ STRIPE) ===== -->
     <section id="contact" class="section">
       <div class="container">
         <div class="contact-grid">
           <div class="contact-info">
             <span class="section-label">Get In Touch</span>
             <h2 class="section-title">Ready to Grow?</h2>
-            <p>Send us a brief about your business, and we will get back to you within 24 hours with a preliminary analysis and proposal.</p>
+            <p>We typically respond within 24 hours with a preliminary analysis and proposal.</p>
             <p><strong>Email:</strong> hello@risesitelab.com<br>
             <strong>Telegram:</strong> @GrowthSite_Lab<br>
             <strong>WhatsApp:</strong> +32 471 72 50 86</p>
             <p style="font-size: 14px; color: #999; margin-top: 30px;">No spam. No pressure. Just a professional conversation about how we can help your business grow.</p>
           </div>
+          
           <div>
-            <form>
-              <div class="form-field">
-                <label>Your Name</label>
-                <input type="text" placeholder="John Doe" required>
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Full Name <span style="color:red;">*</span></label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+                  <span class="form-error" id="nameError"></span>
+                </div>
+                <div class="form-field">
+                  <label for="email">Email <span style="color:red;">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+                  <span class="form-error" id="emailError"></span>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="phone">Phone <span style="color:red;">*</span></label>
+                  <input type="tel" id="phone" name="phone" placeholder="+32 471 00 00 00" required autocomplete="tel">
+                  <span class="form-error" id="phoneError"></span>
+                </div>
+                <div class="form-field">
+                  <label for="company">Company Name</label>
+                  <input type="text" id="company" name="company" placeholder="Your business (optional)" autocomplete="organization">
+                </div>
               </div>
               <div class="form-field">
-                <label>Email Address</label>
-                <input type="email" placeholder="john@example.com" required>
+                <label for="message">Message <span style="color:red;">*</span></label>
+                <textarea id="message" name="message" placeholder="Tell us about your business and what you need..." rows="4" required></textarea>
+                <span class="form-error" id="messageError"></span>
               </div>
-              <div class="form-field">
-                <label>Website URL (if exists)</label>
-                <input type="url" placeholder="https://yoursite.com">
+              
+              <!-- EU Work Commencement Confirmation -->
+              <fieldset class="form-consent">
+                <legend>Work Commencement Confirmation</legend>
+                <div class="consent-row">
+                  <input type="checkbox" id="workConsent" name="work_commencement" required>
+                  <label for="workConsent" style="font-size: 14px;">
+                    <strong>I confirm that I want GrowthSite Lab to start work immediately after payment.</strong>
+                  </label>
+                </div>
+                <p class="small-text">
+                  I understand that under EU Consumer Rights Directive 2011/83/EU,
+                  I have the right to withdraw within 14 days, but I <strong>explicitly waive</strong> this right
+                  because I request immediate work commencement.
+                </p>
+                <p class="small-text">
+                  I have read and agree to the
+                  <a href="terms.html" target="_blank">Terms of Service</a>,
+                  <a href="refund.html" target="_blank">Refund Policy</a>, and
+                  <a href="privacy.html" target="_blank">Privacy Policy</a>.
+                </p>
+                <span class="form-error" id="workConsentError"></span>
+              </fieldset>
+              
+              <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 10px;">
+                Proceed to Payment (Stripe)
+              </button>
+              
+              <div class="form-feedback form-feedback--success" id="formSuccess">
+                Thank you! We will contact you within 24 hours.
               </div>
-              <div class="form-field">
-                <label>Tell us about your business</label>
-                <input type="text" placeholder="e.g. Nail salon in Berlin, 3 masters">
+              <div class="form-feedback form-feedback--error" id="formErrorGlobal">
+                Something went wrong. Please try again or contact us directly.
               </div>
-              <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 10px;">Send Request</button>
             </form>
           </div>
         </div>
@@ -343,7 +402,7 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== FOOTER (С ЮРИДИЧЕСКИМИ ССЫЛКАМИ) ===== -->
   <footer class="footer">
     <div class="container">
       <a href="#" class="logo" style="font-size: 28px; display: inline-block; margin-bottom: 10px;">GrowthSite<span>Lab</span></a>
@@ -354,6 +413,9 @@
         <li><a href="#process">Process</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
+        <li><a href="terms.html" target="_blank">Terms of Service</a></li>
+        <li><a href="refund.html" target="_blank">Refund Policy</a></li>
       </ul>
       <p class="footer__copy">© 2024 GrowthSite Lab. All rights reserved.</p>
     </div>
