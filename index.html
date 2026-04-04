@@ -24,8 +24,6 @@
     <meta name="twitter:description" content="We build high-converting landing pages tailored for the beauty industry. See real examples of our work in our portfolio.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop">
 
-    <meta name="yandex-verification" content="26efee3f5adea0bf" />
-    
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><text x='50%25' y='68%25' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='13' fill='%23FFD700'>GL</text></svg>">
 
@@ -143,21 +141,6 @@
       .hero h1 { font-size: 36px; }
     }
   </style>
-
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108389975', 'ym');
-
-    ym(108389975, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108389975" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
 </head>
 <body>
 
@@ -356,8 +339,8 @@
         </div>
       </div>
     </section>
-
-    <!-- ===== CONTACT (WITH LEGAL FORM FOR STRIPE) ===== -->
+	
+        <!-- ===== CONTACT (MANUAL ORDER PROCESSING) ===== -->
     <section id="contact" class="section">
       <div class="container">
         <div class="contact-grid">
@@ -365,9 +348,31 @@
             <span class="section-label">Get In Touch</span>
             <h2 class="section-title">Ready to Grow?</h2>
             <p>We typically respond within 24 hours with a preliminary analysis and proposal.</p>
+            
             <p><strong>Email:</strong> hello@risesitelab.com<br>
             <strong>Telegram:</strong> @GrowthSite_Lab<br>
             <strong>WhatsApp:</strong> +32 471 72 50 86</p>
+            
+            <div style="margin-top: 30px; padding: 20px; background: var(--bg-light); border-radius: 8px; border: 1px solid #eee;">
+              <h3 style="font-size: 16px; margin-bottom: 15px; color: var(--primary);">Accepted Payment Methods</h3>
+              <ul style="list-style: none; font-size: 14px; color: var(--text-main); line-height: 1.8;">
+                <li style="margin-bottom: 12px;">
+                  <strong>Bank Transfer (Wise) — Primary Method:</strong><br>
+                  Invoice provided upon request. 
+                  Example: €300 for website development for [Client Business] (GrowthSite Lab). 
+                  You can pay securely via bank transfer.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong>PayPal (Business) — Optional 1-Click:</strong><br>
+                  If you prefer to pay in one click via PayPal, we generate a secure payment link and send it along with our offer.
+                </li>
+                <li>
+                  <strong>Crypto (USDT / ETH) — Optional:</strong><br>
+                  Crypto payments are accepted upon request.
+                </li>
+              </ul>
+            </div>
+            
             <p style="font-size: 14px; color: #999; margin-top: 30px;">No spam. No pressure. Just a professional conversation about how we can help your business grow.</p>
           </div>
           
@@ -379,7 +384,7 @@
                   <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
                   <span class="form-error" id="nameError"></span>
                 </div>
-                <div class="form-field">
+                <div class="form-form-field">
                   <label for="email">Email <span style="color:red;">*</span></label>
                   <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
                   <span class="form-error" id="emailError"></span>
@@ -402,31 +407,8 @@
                 <span class="form-error" id="messageError"></span>
               </div>
               
-              <!-- EU Work Commencement Confirmation -->
-              <fieldset class="form-consent">
-                <legend>Work Commencement Confirmation</legend>
-                <div class="consent-row">
-                  <input type="checkbox" id="workConsent" name="work_commencement" required>
-                  <label for="workConsent" style="font-size: 14px;">
-                    <strong>I confirm that I want GrowthSite Lab to start work immediately after payment.</strong>
-                  </label>
-                </div>
-                <p class="small-text">
-                  I understand that under EU Consumer Rights Directive 2011/83/EU,
-                  I have the right to withdraw within 14 days, but I <strong>explicitly waive</strong> this right
-                  because I request immediate work commencement.
-                </p>
-                <p class="small-text">
-                  I have read and agree to the
-                  <a href="terms.html" target="_blank">Terms of Service</a>,
-                  <a href="refund.html" target="_blank">Refund Policy</a>, and
-                  <a href="privacy.html" target="_blank">Privacy Policy</a>.
-                </p>
-                <span class="form-error" id="workConsentError"></span>
-              </fieldset>
-              
               <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 10px;">
-                Proceed to Payment (Stripe)
+                Send Request
               </button>
               
               <div class="form-feedback form-feedback--success" id="formSuccess">
