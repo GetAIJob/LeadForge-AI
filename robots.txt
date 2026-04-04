@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Указываем поисковикам где лежит карта сайта
+Sitemap: https://risesitelab.com/sitemap.xml
+
+# Закрываем юридические страницы от индексации (SEO правило)
+Disallow: /terms.html
+Disallow: /refund.html
+Disallow: /privacy.html
