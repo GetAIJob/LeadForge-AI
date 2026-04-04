@@ -102,14 +102,15 @@
     .pricing-features li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; display: flex; align-items: center; }
     .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 12px; }
 
-    /* CONTACT & LEGAL FORM STYLES */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .form-field { margin-bottom: 20px; }
-    .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text-main); }
+        /* CONTACT & LEGAL FORM STYLES */
+    .contact-grid { display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-top: 50px; align-items: start; }
+    .contact-info p { color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; }
+    .section-title { margin-bottom: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field { margin-bottom: 14px; }
+    .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
     .form-field input, .form-field textarea { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; font-family: 'Inter', sans-serif; }
     .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); }
-    .contact-info p { color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
     
     /* EU Consent Styles */
     fieldset.form-consent { border: 1px solid #eee; padding: 20px; border-radius: 6px; margin-bottom: 20px; }
