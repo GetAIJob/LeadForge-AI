@@ -586,8 +586,7 @@
             .then(function (res) { return res.json(); })
             .then(function (data) {
                 if (data.success) {
-                    document.getElementById('formSuccess').classList.add('visible');
-                    contactForm.reset();
+                    window.location.href = 'thank-you.html';
                 } else {
                     document.getElementById('formErrorGlobal').textContent =
                         (data.message || 'Something went wrong. Please try again or contact us directly.');
