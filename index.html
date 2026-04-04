@@ -32,417 +32,577 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-  
-  <style>
-    /* BASIC STYLES */
-    :root { --primary: #111111; --accent: #B08F5A; --bg-light: #F8F9FA; --text-main: #333333; --text-muted: #666666; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background: #fff; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    
-    /* HEADER */
-    .site-header { padding: 20px 0; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100; }
-    .header__inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; text-decoration: none; color: var(--primary); }
-    .logo span { color: var(--accent); }
-    .nav__list { list-style: none; display: flex; gap: 32px; }
-    .nav__list a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 15px; transition: color 0.3s; }
-    .nav__list a:hover { color: var(--accent); }
-    .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; border: none; cursor: pointer; }
-    .btn--primary { background: var(--accent); color: #fff; }
-    .btn--primary:hover { background: #9a7d4e; }
-    .btn--outline { border: 1px solid #ddd; color: var(--primary); background: transparent; }
-    .btn--outline:hover { border-color: var(--primary); }
-    .burger { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+    <style>
+        /* BASIC STYLES */
+        :root { --primary: #111111; --accent: #B08F5A; --bg-light: #F8F9FA; --text-main: #333333; --text-muted: #666666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.6; background: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* HERO */
-    .hero { padding: 100px 0 60px; text-align: center; background: var(--bg-light); }
-    .hero__badge { display: inline-block; padding: 6px 16px; background: #fff; border: 1px solid #ddd; border-radius: 50px; font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.2; margin-bottom: 24px; color: var(--primary); }
-    .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
-    .hero__ctas { display: flex; gap: 16px; justify-content: center; }
-    .hero__stats { display: flex; justify-content: center; gap: 60px; margin-top: 60px; padding-top: 40px; border-top: 1px solid #ddd; }
-    .hero__stat-value { display: block; font-size: 32px; font-weight: 700; color: var(--primary); }
-    .hero__stat-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        /* HEADER */
+        .site-header { padding: 20px 0; border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100; }
+        .header__inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; text-decoration: none; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav__list { list-style: none; display: flex; gap: 32px; }
+        .nav__list a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 15px; transition: color 0.3s; }
+        .nav__list a:hover { color: var(--accent); }
+        .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn--primary { background: var(--accent); color: #fff; }
+        .btn--primary:hover { background: #9a7d4e; }
+        .btn--outline { border: 1px solid #ddd; color: var(--primary); background: transparent; }
+        .btn--outline:hover { border-color: var(--primary); }
+        .burger { display: none; background: none; border: none; font-size: 24px; cursor: pointer; line-height: 1; }
 
-    /* SECTION COMMONS */
-    .section { padding: 100px 0; }
-    .section-label { text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 24px; color: var(--primary); }
+        /* HERO */
+        .hero { padding: 100px 0 60px; text-align: center; background: var(--bg-light); }
+        .hero__badge { display: inline-block; padding: 6px 16px; background: #fff; border: 1px solid #ddd; border-radius: 50px; font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.2; margin-bottom: 24px; color: var(--primary); }
+        .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
+        .hero__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .hero__stats { display: flex; justify-content: center; gap: 60px; margin-top: 60px; padding-top: 40px; border-top: 1px solid #ddd; }
+        .hero__stat-value { display: block; font-size: 32px; font-weight: 700; color: var(--primary); }
+        .hero__stat-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
-    /* PORTFOLIO */
-    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-    .portfolio-card { display: block; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); text-decoration: none; color: var(--text-main); transition: transform 0.4s, box-shadow 0.4s; border: 1px solid #eee; }
-    .portfolio-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
-    .portfolio-card__img { width: 100%; height: 260px; object-fit: cover; display: block; }
-    .portfolio-card__content { padding: 24px; border-top: 1px solid #eee; }
-    .portfolio-card__tag { font-size: 13px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-    .portfolio-card__name { font-size: 20px; font-weight: 700; margin: 8px 0; }
-    .portfolio-card__link { font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
-    .portfolio-card:hover .portfolio-card__link { color: var(--accent); }
+        /* SECTION COMMONS */
+        .section { padding: 100px 0; }
+        .section-label { text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 24px; color: var(--primary); }
 
-    /* PROCESS */
-    .process { background: var(--primary); color: #fff; }
-    .process .section-title { color: #fff; }
-    .process .section-label { color: #ccc; }
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
-    .process-step h3 { font-size: 18px; margin: 16px 0 8px; }
-    .process-step p { font-size: 14px; color: #aaa; line-height: 1.6; }
-    .process-num { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--accent); opacity: 0.5; }
+        /* PORTFOLIO */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .portfolio-card { display: block; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); text-decoration: none; color: var(--text-main); transition: transform 0.4s, box-shadow 0.4s; border: 1px solid #eee; }
+        .portfolio-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .portfolio-card__img { width: 100%; height: 260px; object-fit: cover; display: block; }
+        .portfolio-card__content { padding: 24px; border-top: 1px solid #eee; }
+        .portfolio-card__tag { font-size: 13px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .portfolio-card__name { font-size: 20px; font-weight: 700; margin: 8px 0; }
+        .portfolio-card__link { font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+        .portfolio-card:hover .portfolio-card__link { color: var(--accent); }
 
-    /* PRICING */
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; align-items: start; }
-    .pricing-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 40px 30px; text-align: center; }
-    .pricing-card.featured { border: 2px solid var(--accent); position: relative; transform: scale(1.05); }
-    .pricing-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 4px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; }
-    .pricing-name { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
-    .pricing-price { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
-    .pricing-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; }
-    .pricing-features { list-style: none; text-align: left; margin-bottom: 30px; }
-    .pricing-features li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; display: flex; align-items: center; }
-    .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 12px; }
+        /* PROCESS */
+        .process { background: var(--primary); color: #fff; }
+        .process .section-title { color: #fff; }
+        .process .section-label { color: #ccc; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
+        .process-step h3 { font-size: 18px; margin: 16px 0 8px; }
+        .process-step p { font-size: 14px; color: #aaa; line-height: 1.6; }
+        .process-num { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--accent); opacity: 0.5; }
 
-            /* CONTACT & LEGAL FORM STYLES */
-    .contact-grid { display: grid; grid-template-columns: minmax(300px, 40%) 1fr; gap: 30px; margin-top: 50px; align-items: start; }
-    .contact-info p { color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; font-size: 15px; }
-    .section-title { margin-bottom: 16px; font-size: 34px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-field { margin-bottom: 14px; }
-    .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
-    .form-field input, .form-field textarea { width: 100%; max-width: 500px; padding: 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; font-family: 'Inter', sans-serif; }
-    .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); }
-    
-    /* EU Consent Styles */
-    fieldset.form-consent { border: 1px solid #eee; padding: 20px; border-radius: 6px; margin-bottom: 20px; }
-    legend { font-weight: 700; font-size: 14px; padding: 0 10px; color: var(--primary); }
-    .consent-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
-    .consent-row input { width: 20px; height: 20px; margin-top: 2px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
-    .small-text { font-size: 13px; color: #888; margin-bottom: 12px; line-height: 1.5; }
-    .small-text a { color: var(--accent); text-decoration: underline; }
-    .form-error { color: #d32f2f; font-size: 13px; display: block; margin-top: 4px; }
-    .form-feedback { margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; display: none; }
-    .form-feedback--success { background: #e8f5e9; color: #2e7d32; }
-    .form-feedback--error { background: #ffebee; color: #c62828; }
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; align-items: start; }
+        .pricing-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 40px 30px; text-align: center; }
+        .pricing-card.featured { border: 2px solid var(--accent); position: relative; transform: scale(1.05); }
+        .pricing-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 4px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; }
+        .pricing-name { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+        .pricing-price { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+        .pricing-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 30px; }
+        .pricing-features li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; display: flex; align-items: center; }
+        .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: 12px; }
 
-    /* FOOTER */
-    .footer { background: #111; color: #fff; padding: 60px 0 30px; text-align: center; }
-    .footer a { color: #fff; text-decoration: none; transition: color 0.3s; }
-    .footer a:hover { color: var(--accent); }
-    .footer__nav { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
-    .footer__copy { font-size: 14px; color: #777; }
+        /* CONTACT & FORM */
+        .contact-grid { display: grid; grid-template-columns: minmax(300px, 40%) 1fr; gap: 30px; margin-top: 50px; align-items: start; }
+        .contact-info p { color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; font-size: 15px; }
+        .contact-info .section-title { margin-bottom: 16px; font-size: 34px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-field { margin-bottom: 14px; }
+        .form-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-main); }
+        .form-field input, .form-field textarea { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; font-family: 'Inter', sans-serif; transition: border-color 0.3s; }
+        .form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(176, 143, 90, 0.15); }
 
-    /* RESPONSIVE */
-    @media (max-width: 992px) {
-      .portfolio-grid, .process-grid, .pricing-grid { grid-template-columns: 1fr; }
-      .pricing-card.featured { transform: none; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .nav__list { display: none; }
-      .burger { display: block; }
-      .hero h1 { font-size: 36px; }
-    }
-  </style>
+        /* EU Consent */
+        fieldset.form-consent { border: 1px solid #eee; padding: 20px; border-radius: 6px; margin-bottom: 20px; }
+        legend { font-weight: 700; font-size: 14px; padding: 0 10px; color: var(--primary); }
+        .consent-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+        .consent-row input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
+        .consent-row label { font-size: 14px; color: var(--text-main); line-height: 1.5; cursor: pointer; }
+        .consent-row label a { color: var(--accent); text-decoration: underline; }
+
+        .form-error { color: #d32f2f; font-size: 13px; display: none; margin-top: 4px; }
+        .form-error.visible { display: block; }
+        .form-field input.invalid, .form-field textarea.invalid { border-color: #d32f2f; }
+        .form-feedback { margin-top: 15px; padding: 15px; border-radius: 6px; font-size: 14px; display: none; }
+        .form-feedback.visible { display: block; }
+        .form-feedback--success { background: #e8f5e9; color: #2e7d32; }
+        .form-feedback--error { background: #ffebee; color: #c62828; }
+
+        /* MOBILE NAV */
+        .nav__list.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 24px; gap: 20px; border-bottom: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+        /* FOOTER */
+        .footer { background: #111; color: #fff; padding: 60px 0 30px; text-align: center; }
+        .footer a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        .footer a:hover { color: var(--accent); }
+        .footer__nav { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
+        .footer__copy { font-size: 14px; color: #777; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .portfolio-grid, .process-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav__list { display: none; }
+            .burger { display: block; }
+            .hero h1 { font-size: 36px; }
+            .hero__stats { gap: 30px; flex-wrap: wrap; }
+            .section-title { font-size: 32px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 28px; }
+            .hero__ctas { flex-direction: column; align-items: center; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <div class="container header__inner">
-      <a href="#" class="logo">GrowthSite<span>Lab</span></a>
-      <nav aria-label="Primary navigation">
-        <ul class="nav__list">
-          <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
-      </nav>
-      <a href="#contact" class="btn btn--primary">Contact Us</a>
-      <button class="burger" aria-label="Menu">☰</button>
-    </div>
-  </header>
-
-  <main>
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="container">
-        <span class="hero__badge">POWERED BY LEADFORGE AI</span>
-        <h1>Websites That Drive Beauty Business Growth</h1>
-        <p>We solve the core problem of beauty websites: poor design that loses clients. We build high-converting sites based on deep niche research.</p>
-        <div class="hero__ctas">
-          <a href="#contact" class="btn btn--primary">Order Website</a>
-          <a href="#portfolio" class="btn btn--outline">View Portfolio</a>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="container header__inner">
+            <a href="#" class="logo">GrowthSite<span>Lab</span></a>
+            <nav aria-label="Primary navigation">
+                <ul class="nav__list" id="navList">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn btn--primary header-cta">Contact Us</a>
+            <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
         </div>
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <span class="hero__stat-value">48h</span>
-            <span class="hero__stat-label">Delivery Time</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value">3×</span>
-            <span class="hero__stat-label">More Leads</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-value">100%</span>
-            <span class="hero__stat-label">Quality Check</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="section">
-      <div class="container" style="max-width: 800px; text-align: center;">
-        <span class="section-label">Built for One Purpose</span>
-        <h2 class="section-title">Your Lead Growth</h2>
-        <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 40px;">
-          GrowthSite Lab is an AI-driven system that identifies businesses losing clients due to poor web presence, analyzes their competitors, and builds conversion-optimized websites tailored specifically for the beauty industry.
-        </p>
-        <ul style="list-style: none; text-align: left; max-width: 600px; margin: 0 auto;">
-          <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
-            <span style="color: var(--accent); font-weight: bold;">✓</span>
-            <span><strong>Quality Guaranteed:</strong> Every site passes a personal design and structure audit before delivery.</span>
-          </li>
-          <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
-            <span style="color: var(--accent); font-weight: bold;">✓</span>
-            <span><strong>Results, Not Just Development:</strong> We focus on user experience and conversion, not just code.</span>
-          </li>
-          <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
-            <span style="color: var(--accent); font-weight: bold;">✓</span>
-            <span><strong>No Spam. Ever.</strong> Professional research only. We do not do mass mailings.</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== PORTFOLIO (FULLY COPIED) ===== -->
-    <section id="portfolio" class="section" style="background: var(--bg-light);">
-      <div class="container">
-        <div style="text-align: center;">
-          <span class="section-label">Our Work</span>
-          <h2 class="section-title">Real Websites. Real Results.</h2>
-          <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Live demo projects created for the beauty niche. Click to view the full interactive experience.</p>
-        </div>
-
-        <div class="portfolio-grid">
-          
-          <a href="https://aurora-beauty-lounge.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
-            <img src="images/1_Aurora.jpg" alt="Aurora Beauty Lounge Website Preview" class="portfolio-card__img">
-            <div class="portfolio-card__content">
-              <span class="portfolio-card__tag">Cosmetology · Florence</span>
-              <h3 class="portfolio-card__name">Aurora Beauty Lounge</h3>
-              <span class="portfolio-card__link">View Live Demo →</span>
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="container">
+                <span class="hero__badge">POWERED BY LEADFORGE AI</span>
+                <h1>Websites That Drive Beauty Business Growth</h1>
+                <p>We solve the core problem of beauty websites: poor design that loses clients. We build high-converting sites based on deep niche research.</p>
+                <div class="hero__ctas">
+                    <a href="#contact" class="btn btn--primary">Order Website</a>
+                    <a href="#portfolio" class="btn btn--outline">View Portfolio</a>
+                </div>
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <span class="hero__stat-value">48h</span>
+                        <span class="hero__stat-label">Delivery Time</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-value">3×</span>
+                        <span class="hero__stat-label">More Leads</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-value">100%</span>
+                        <span class="hero__stat-label">Quality Check</span>
+                    </div>
+                </div>
             </div>
-          </a>
+        </section>
 
-          <a href="https://velvet-nail-bar.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
-            <img src="images/2_Velvet.jpg" alt="Velvet Nail Bar Website Preview" class="portfolio-card__img">
-            <div class="portfolio-card__content">
-              <span class="portfolio-card__tag">Nail Studio · Amsterdam</span>
-              <h3 class="portfolio-card__name">Velvet Nail Bar</h3>
-              <span class="portfolio-card__link">View Live Demo →</span>
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="section">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <span class="section-label">Built for One Purpose</span>
+                <h2 class="section-title">Your Lead Growth</h2>
+                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 40px;">
+                    GrowthSite Lab is an AI-driven system that identifies businesses losing clients due to poor web presence, analyzes their competitors, and builds conversion-optimized websites tailored specifically for the beauty industry.
+                </p>
+                <ul style="list-style: none; text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
+                        <span style="color: var(--accent); font-weight: bold;">✓</span>
+                        <span><strong>Quality Guaranteed:</strong> Every site passes a personal design and structure audit before delivery.</span>
+                    </li>
+                    <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
+                        <span style="color: var(--accent); font-weight: bold;">✓</span>
+                        <span><strong>Results, Not Just Development:</strong> We focus on user experience and conversion, not just code.</span>
+                    </li>
+                    <li style="margin-bottom: 16px; display: flex; align-items: start; gap: 12px;">
+                        <span style="color: var(--accent); font-weight: bold;">✓</span>
+                        <span><strong>No Spam. Ever.</strong> Professional research only. We do not do mass mailings.</span>
+                    </li>
+                </ul>
             </div>
-          </a>
+        </section>
 
-          <a href="https://muse-studio-hair.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
-            <img src="images/3_Muse.jpg" alt="Muse Studio Hair Website Preview" class="portfolio-card__img">
-            <div class="portfolio-card__content">
-              <span class="portfolio-card__tag">Hair Salon · Barcelona</span>
-              <h3 class="portfolio-card__name">Muse Studio Hair</h3>
-              <span class="portfolio-card__link">View Live Demo →</span>
+        <!-- ===== PORTFOLIO ===== -->
+        <section id="portfolio" class="section" style="background: var(--bg-light);">
+            <div class="container">
+                <div style="text-align: center;">
+                    <span class="section-label">Our Work</span>
+                    <h2 class="section-title">Real Websites. Real Results.</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Live demo projects created for the beauty niche. Click to view the full interactive experience.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <a href="https://aurora-beauty-lounge.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+                        <img src="images/1_Aurora.jpg" alt="Aurora Beauty Lounge Website Preview" class="portfolio-card__img" loading="lazy">
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__tag">Cosmetology · Florence</span>
+                            <h3 class="portfolio-card__name">Aurora Beauty Lounge</h3>
+                            <span class="portfolio-card__link">View Live Demo →</span>
+                        </div>
+                    </a>
+                    <a href="https://velvet-nail-bar.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+                        <img src="images/2_Velvet.jpg" alt="Velvet Nail Bar Website Preview" class="portfolio-card__img" loading="lazy">
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__tag">Nail Studio · Amsterdam</span>
+                            <h3 class="portfolio-card__name">Velvet Nail Bar</h3>
+                            <span class="portfolio-card__link">View Live Demo →</span>
+                        </div>
+                    </a>
+                    <a href="https://muse-studio-hair.risesitelab.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+                        <img src="images/3_Muse.jpg" alt="Muse Studio Hair Website Preview" class="portfolio-card__img" loading="lazy">
+                        <div class="portfolio-card__content">
+                            <span class="portfolio-card__tag">Hair Salon · Barcelona</span>
+                            <h3 class="portfolio-card__name">Muse Studio Hair</h3>
+                            <span class="portfolio-card__link">View Live Demo →</span>
+                        </div>
+                    </a>
+                </div>
             </div>
-          </a>
+        </section>
 
-        </div>
-      </div>
-    </section>
+        <!-- ===== PROCESS ===== -->
+        <section id="process" class="section process">
+            <div class="container">
+                <div style="text-align: center;">
+                    <span class="section-label">Our Approach</span>
+                    <h2 class="section-title">From Brief to Live Website</h2>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step" style="text-align: center;">
+                        <span class="process-num">01</span>
+                        <h3>Research & Audit</h3>
+                        <p>50% of our work. Analyzing the client's niche, competitors, and target audience to build a foundation.</p>
+                    </div>
+                    <div class="process-step" style="text-align: center;">
+                        <span class="process-num">02</span>
+                        <h3>Architecture</h3>
+                        <p>Creating a conversion-optimized structure. Mapping out sections, user flow, and content strategy.</p>
+                    </div>
+                    <div class="process-step" style="text-align: center;">
+                        <span class="process-num">03</span>
+                        <h3>Development</h3>
+                        <p>Writing clean, fast HTML/CSS/JS code. Mobile-first design with premium typography.</p>
+                    </div>
+                    <div class="process-step" style="text-align: center;">
+                        <span class="process-num">04</span>
+                        <h3>Quality Check</h3>
+                        <p>Personal review of design, mobile version, and texts. No AI-generated filler passes our check.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- ===== PROCESS ===== -->
-    <section id="process" class="section process">
-      <div class="container">
-        <div style="text-align: center;">
-          <span class="section-label">Our Approach</span>
-          <h2 class="section-title">From Brief to Live Website</h2>
-        </div>
-        <div class="process-grid">
-          <div class="process-step" style="text-align: center;">
-            <span class="process-num">01</span>
-            <h3>Research & Audit</h3>
-            <p>50% of our work. Analyzing the client's niche, competitors, and target audience to build a foundation.</p>
-          </div>
-          <div class="process-step" style="text-align: center;">
-            <span class="process-num">02</span>
-            <h3>Architecture</h3>
-            <p>Creating a conversion-optimized structure. Mapping out sections, user flow, and content strategy.</p>
-          </div>
-          <div class="process-step" style="text-align: center;">
-            <span class="process-num">03</span>
-            <h3>Development</h3>
-            <p>Writing clean, fast HTML/CSS/JS code. Mobile-first design with premium typography.</p>
-          </div>
-          <div class="process-step" style="text-align: center;">
-            <span class="process-num">04</span>
-            <h3>Quality Check</h3>
-            <p>Personal review of design, mobile version, and texts. No AI-generated filler passes our check.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- ===== PRICING ===== -->
+        <section id="pricing" class="section">
+            <div class="container">
+                <div style="text-align: center;">
+                    <span class="section-label">Investment</span>
+                    <h2 class="section-title">Choose Your Growth Plan</h2>
+                </div>
+                <div class="pricing-grid">
+                    <article class="pricing-card">
+                        <h3 class="pricing-name">START</h3>
+                        <div class="pricing-price">€300 – €500</div>
+                        <p class="pricing-desc">Perfect for small businesses needing a strong first online presence.</p>
+                        <ul class="pricing-features">
+                            <li>One-page landing site</li>
+                            <li>Mobile-responsive design</li>
+                            <li>Basic SEO setup</li>
+                            <li>Delivery in 48 hours</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--outline" style="width: 100%; text-align: center;">Get Started</a>
+                    </article>
+                    <article class="pricing-card featured">
+                        <h3 class="pricing-name">BUSINESS</h3>
+                        <div class="pricing-price">€800 – €1,500</div>
+                        <p class="pricing-desc">For established salons looking to dominate local search and convert visitors.</p>
+                        <ul class="pricing-features">
+                            <li>Multi-section premium site</li>
+                            <li>Advanced UI/UX design</li>
+                            <li>Booking form integration</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--primary" style="width: 100%; text-align: center;">Get Started</a>
+                    </article>
+                    <article class="pricing-card">
+                        <h3 class="pricing-name">GROWTH</h3>
+                        <div class="pricing-price">€50 – €150<span style="font-size:16px; color:var(--text-muted);">/mo</span></div>
+                        <p class="pricing-desc">Subscription model. We build, host, and continuously update your site.</p>
+                        <ul class="pricing-features">
+                            <li>Premium site creation</li>
+                            <li>Cloudflare hosting included</li>
+                            <li>Monthly text/visual updates</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--outline" style="width: 100%; text-align: center;">Get Started</a>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <!-- ===== PRICING ===== -->
-    <section id="pricing" class="section">
-      <div class="container">
-        <div style="text-align: center;">
-          <span class="section-label">Investment</span>
-          <h2 class="section-title">Choose Your Growth Plan</h2>
-        </div>
-        <div class="pricing-grid">
-          
-          <article class="pricing-card">
-            <h3 class="pricing-name">START</h3>
-            <div class="pricing-price">€300 - €500</div>
-            <p class="pricing-desc">Perfect for small businesses needing a strong first online presence.</p>
-            <ul class="pricing-features">
-              <li>One-page landing site</li>
-              <li>Mobile-responsive design</li>
-              <li>Basic SEO setup</li>
-              <li>Delivery in 48 hours</li>
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="section-label">Get In Touch</span>
+                        <h2 class="section-title">Ready to Grow?</h2>
+                        <p>We typically respond within 24 hours with a preliminary analysis and proposal.</p>
+
+                        <p><strong>Email:</strong> hello@risesitelab.com<br>
+                        <strong>Telegram:</strong> @GrowthSite_Lab<br>
+                        <strong>WhatsApp:</strong> +32 471 72 50 86</p>
+
+                        <div style="margin-top: 30px; padding: 20px; background: var(--bg-light); border-radius: 8px; border: 1px solid #eee;">
+                            <h3 style="font-size: 16px; margin-bottom: 15px; color: var(--primary);">Accepted Payment Methods</h3>
+                            <ul style="list-style: none; font-size: 14px; color: var(--text-main); line-height: 1.8;">
+                                <li style="margin-bottom: 12px;">
+                                    <strong>Bank Transfer (Wise) — Primary Method:</strong><br>
+                                    Invoice provided upon request.
+                                    Example: €300 for website development for [Client Business] (GrowthSite Lab).
+                                    You can pay securely via bank transfer.
+                                </li>
+                                <li style="margin-bottom: 12px;">
+                                    <strong>PayPal (Business) — Optional 1-Click:</strong><br>
+                                    If you prefer to pay in one click via PayPal, we generate a secure payment link and send it along with our offer.
+                                </li>
+                                <li>
+                                    <strong>Crypto (USDT / ETH) — Optional:</strong><br>
+                                    Crypto payments are accepted upon request.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <p style="font-size: 14px; color: #999; margin-top: 30px;">No spam. No pressure. Just a professional conversation about how we can help your business grow.</p>
+                    </div>
+
+                    <div>
+                        <form id="contactForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="name">Full Name <span style="color:red;">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+                                    <span class="form-error" id="nameError">Please enter your name.</span>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email">Email <span style="color:red;">*</span></label>
+                                    <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+                                    <span class="form-error" id="emailError">Please enter a valid email.</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="phone">Phone <span style="color:red;">*</span></label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+32 471 00 00 00" required autocomplete="tel">
+                                    <span class="form-error" id="phoneError">Please enter your phone number.</span>
+                                </div>
+                                <div class="form-field">
+                                    <label for="company">Company Name</label>
+                                    <input type="text" id="company" name="company" placeholder="Your business (optional)" autocomplete="organization">
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <label for="message">Message <span style="color:red;">*</span></label>
+                                <textarea id="message" name="message" placeholder="Tell us about your business and what you need..." rows="4" required></textarea>
+                                <span class="form-error" id="messageError">Please enter a message.</span>
+                            </div>
+
+                            <!-- EU GDPR Consent -->
+                            <fieldset class="form-consent">
+                                <legend>Consent</legend>
+                                <div class="consent-row">
+                                    <input type="checkbox" id="consentPrivacy" name="consentPrivacy" required>
+                                    <label for="consentPrivacy">I agree to the processing of my personal data in accordance with the <a href="privacy.html" target="_blank">Privacy Policy</a>. <span style="color:red;">*</span></label>
+                                </div>
+                                <div class="consent-row">
+                                    <input type="checkbox" id="consentMarketing" name="consentMarketing">
+                                    <label for="consentMarketing">I agree to receive occasional updates about services and offers (optional).</label>
+                                </div>
+                                <span class="form-error" id="consentError">You must accept the Privacy Policy to proceed.</span>
+                            </fieldset>
+
+                            <!-- Honeypot anti-spam (hidden from users) -->
+                            <input type="checkbox" name="botcheck" style="display:none">
+
+                            <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 10px;">
+                                Send Request
+                            </button>
+
+                            <div class="form-feedback form-feedback--success" id="formSuccess">
+                                Thank you! We will contact you within 24 hours.
+                            </div>
+                            <div class="form-feedback form-feedback--error" id="formErrorGlobal">
+                                Something went wrong. Please try again or contact us directly via email or Telegram.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo" style="font-size: 28px; display: inline-block; margin-bottom: 10px;">GrowthSite<span>Lab</span></a>
+            <p style="color: #888; margin-bottom: 30px;">LeadForge AI Technology</p>
+            <ul class="footer__nav">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
+                <li><a href="terms.html" target="_blank">Terms of Service</a></li>
+                <li><a href="refund.html" target="_blank">Refund Policy</a></li>
             </ul>
-            <a href="#contact" class="btn btn--outline" style="width: 100%;">Get Started</a>
-          </article>
-
-          <article class="pricing-card featured">
-            <h3 class="pricing-name">BUSINESS</h3>
-            <div class="pricing-price">€800 - €1,500</div>
-            <p class="pricing-desc">For established salons looking to dominate local search and convert visitors.</p>
-            <ul class="pricing-features">
-              <li>Multi-section premium site</li>
-              <li>Advanced UI/UX design</li>
-              <li>Booking form integration</li>
-              <li>Performance optimization</li>
-            </ul>
-            <a href="#contact" class="btn btn--primary" style="width: 100%;">Get Started</a>
-          </article>
-
-          <article class="pricing-card">
-            <h3 class="pricing-name">GROWTH</h3>
-            <div class="pricing-price">€50 - €150<span style="font-size:16px; color:var(--text-muted);">/mo</span></div>
-            <p class="pricing-desc">Subscription model. We build, host, and continuously update your site.</p>
-            <ul class="pricing-features">
-              <li>Premium site creation</li>
-              <li>Cloudflare hosting included</li>
-              <li>Monthly text/visual updates</li>
-              <li>Priority support</li>
-            </ul>
-            <a href="#contact" class="btn btn--outline" style="width: 100%;">Get Started</a>
-          </article>
-
+            <p class="footer__copy">© 2025 GrowthSite Lab. All rights reserved.</p>
         </div>
-      </div>
-    </section>
-	
-        <!-- ===== CONTACT (MANUAL ORDER PROCESSING) ===== -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="contact-grid">
-          <div class="contact-info">
-            <span class="section-label">Get In Touch</span>
-            <h2 class="section-title">Ready to Grow?</h2>
-            <p>We typically respond within 24 hours with a preliminary analysis and proposal.</p>
-            
-            <p><strong>Email:</strong> hello@risesitelab.com<br>
-            <strong>Telegram:</strong> @GrowthSite_Lab<br>
-            <strong>WhatsApp:</strong> +32 471 72 50 86</p>
-            
-            <div style="margin-top: 30px; padding: 20px; background: var(--bg-light); border-radius: 8px; border: 1px solid #eee;">
-              <h3 style="font-size: 16px; margin-bottom: 15px; color: var(--primary);">Accepted Payment Methods</h3>
-              <ul style="list-style: none; font-size: 14px; color: var(--text-main); line-height: 1.8;">
-                <li style="margin-bottom: 12px;">
-                  <strong>Bank Transfer (Wise) — Primary Method:</strong><br>
-                  Invoice provided upon request. 
-                  Example: €300 for website development for [Client Business] (GrowthSite Lab). 
-                  You can pay securely via bank transfer.
-                </li>
-                <li style="margin-bottom: 12px;">
-                  <strong>PayPal (Business) — Optional 1-Click:</strong><br>
-                  If you prefer to pay in one click via PayPal, we generate a secure payment link and send it along with our offer.
-                </li>
-                <li>
-                  <strong>Crypto (USDT / ETH) — Optional:</strong><br>
-                  Crypto payments are accepted upon request.
-                </li>
-              </ul>
-            </div>
-            
-            <p style="font-size: 14px; color: #999; margin-top: 30px;">No spam. No pressure. Just a professional conversation about how we can help your business grow.</p>
-          </div>
-          
-          <div>
-            <form id="contactForm" novalidate>
-              <div class="form-row">
-                <div class="form-field">
-                  <label for="name">Full Name <span style="color:red;">*</span></label>
-                  <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
-                  <span class="form-error" id="nameError"></span>
-                </div>
-                <div class="form-form-field">
-                  <label for="email">Email <span style="color:red;">*</span></label>
-                  <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
-                  <span class="form-error" id="emailError"></span>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-field">
-                  <label for="phone">Phone <span style="color:red;">*</span></label>
-                  <input type="tel" id="phone" name="phone" placeholder="+32 471 00 00 00" required autocomplete="tel">
-                  <span class="form-error" id="phoneError"></span>
-                </div>
-                <div class="form-field">
-                  <label for="company">Company Name</label>
-                  <input type="text" id="company" name="company" placeholder="Your business (optional)" autocomplete="organization">
-                </div>
-              </div>
-              <div class="form-field">
-                <label for="message">Message <span style="color:red;">*</span></label>
-                <textarea id="message" name="message" placeholder="Tell us about your business and what you need..." rows="4" required></textarea>
-                <span class="form-error" id="messageError"></span>
-              </div>
-              
-              <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 10px;">
-                Send Request
-              </button>
-              
-              <div class="form-feedback form-feedback--success" id="formSuccess">
-                Thank you! We will contact you within 24 hours.
-              </div>
-              <div class="form-feedback form-feedback--error" id="formErrorGlobal">
-                Something went wrong. Please try again or contact us directly.
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- ===== FOOTER (WITH LEGAL LINKS) ===== -->
-  <footer class="footer">
-    <div class="container">
-      <a href="#" class="logo" style="font-size: 28px; display: inline-block; margin-bottom: 10px;">GrowthSite<span>Lab</span></a>
-      <p style="color: #888; margin-bottom: 30px;">LeadForge AI Technology</p>
-      <ul class="footer__nav">
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
-        <li><a href="terms.html" target="_blank">Terms of Service</a></li>
-        <li><a href="refund.html" target="_blank">Refund Policy</a></li>
-      </ul>
-      <p class="footer__copy">© 2024 GrowthSite Lab. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        /* ---------- Mobile Menu ---------- */
+        var burgerBtn = document.getElementById('burgerBtn');
+        var navList = document.getElementById('navList');
+
+        burgerBtn.addEventListener('click', function () {
+            var isOpen = navList.classList.toggle('open');
+            burgerBtn.setAttribute('aria-expanded', isOpen);
+            burgerBtn.textContent = isOpen ? '✕' : '☰';
+        });
+
+        navList.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navList.classList.remove('open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                burgerBtn.textContent = '☰';
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!burgerBtn.contains(e.target) && !navList.contains(e.target)) {
+                navList.classList.remove('open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+                burgerBtn.textContent = '☰';
+            }
+        });
+
+        /* ---------- Smooth Scroll ---------- */
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    var headerH = document.querySelector('.site-header').offsetHeight;
+                    var pos = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                }
+            });
+        });
+
+        /* ---------- Form: Validation + Web3Forms ---------- */
+        var contactForm = document.getElementById('contactForm');
+
+        function showError(fieldId, errorId) {
+            var f = document.getElementById(fieldId);
+            var e = document.getElementById(errorId);
+            if (f) f.classList.add('invalid');
+            if (e) e.classList.add('visible');
+        }
+
+        function clearError(fieldId, errorId) {
+            var f = document.getElementById(fieldId);
+            var e = document.getElementById(errorId);
+            if (f) f.classList.remove('invalid');
+            if (e) e.classList.remove('visible');
+        }
+
+        function clearAllErrors() {
+            var pairs = [['name','nameError'],['email','emailError'],['phone','phoneError'],['message','messageError']];
+            pairs.forEach(function (p) { clearError(p[0], p[1]); });
+            document.getElementById('consentError').classList.remove('visible');
+            document.getElementById('formSuccess').classList.remove('visible');
+            document.getElementById('formErrorGlobal').classList.remove('visible');
+        }
+
+        // Live clear on input
+        ['name','email','phone','message'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.addEventListener('input', function () { clearError(id, id + 'Error'); });
+        });
+        document.getElementById('consentPrivacy').addEventListener('change', function () {
+            document.getElementById('consentError').classList.remove('visible');
+        });
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            clearAllErrors();
+
+            var valid = true;
+            var nameVal    = document.getElementById('name').value.trim();
+            var emailVal   = document.getElementById('email').value.trim();
+            var phoneVal   = document.getElementById('phone').value.trim();
+            var messageVal = document.getElementById('message').value.trim();
+            var consentOk  = document.getElementById('consentPrivacy').checked;
+
+            if (nameVal.length < 2)    { showError('name', 'nameError'); valid = false; }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { showError('email', 'emailError'); valid = false; }
+            if (phoneVal.length < 7)    { showError('phone', 'phoneError'); valid = false; }
+            if (messageVal.length < 10) { showError('message', 'messageError'); valid = false; }
+            if (!consentOk)             { document.getElementById('consentError').classList.add('visible'); valid = false; }
+
+            if (!valid) return;
+
+            // Lock button
+            var btn = contactForm.querySelector('button[type="submit"]');
+            var btnText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            // Build payload for Web3Forms
+            var formData = new FormData();
+            formData.append('access_key', '1685ea7f-e2ed-4a2b-9c44-45e287e1017a');
+            formData.append('name', nameVal);
+            formData.append('email', emailVal);
+            formData.append('phone', phoneVal);
+            formData.append('company', document.getElementById('company').value.trim());
+            formData.append('message', messageVal);
+            formData.append('Privacy Consent', consentOk ? 'Yes' : 'No');
+            formData.append('Marketing Consent', document.getElementById('consentMarketing').checked ? 'Yes' : 'No');
+            formData.append('botcheck', '');           // honeypot — bots fill this, Web3Forms rejects
+            formData.append('subject', 'New inquiry from ' + nameVal + ' — GrowthSite Lab');
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    document.getElementById('formSuccess').classList.add('visible');
+                    contactForm.reset();
+                } else {
+                    document.getElementById('formErrorGlobal').textContent =
+                        (data.message || 'Something went wrong. Please try again or contact us directly.');
+                    document.getElementById('formErrorGlobal').classList.add('visible');
+                }
+            })
+            .catch(function () {
+                document.getElementById('formErrorGlobal').classList.add('visible');
+            })
+            .finally(function () {
+                btn.disabled = false;
+                btn.textContent = btnText;
+            });
+        });
+    </script>
 
 </body>
 </html>
