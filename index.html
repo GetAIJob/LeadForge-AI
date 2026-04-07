@@ -604,17 +604,17 @@
     </script>
 	
 	<!-- ==========================================
-     UPDATED RISE CHAT WIDGET (LIGHT THEME)
+     UPDATED RISE CHAT WIDGET (AUTO-OPEN + DESIGN)
 ========================================== -->
 
 <style>
-  /* CSS Стили (Светлая тема) */
+  /* CSS Стили */
   #rise-chat-widget {
     --rc-bg: #ffffff;
-    --rc-card: #f4f4f4; /* Светло-серый фон карточки */
-    --rc-gold: #C9A97A; /* Оставляем фирменный золотой */
+    --rc-card: #f4f4f4;
+    --rc-gold: #C9A97A;
     --rc-text: #333333;
-    --rc-border: #e0e0e0;
+    --rc-border: #cccccc; /* <-- ИЗМЕНЕНО 3: Рамка темнее */
     --rc-user-bubble: #C9A97A;
     --rc-user-text: #ffffff;
     
@@ -651,9 +651,9 @@
     width: 350px;
     height: 500px;
     background: var(--rc-bg);
-    border: 1px solid var(--rc-border);
+    border: 1px solid var(--rc-border); /* Темная рамка применяется здесь */
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* Чуть темнее тень */
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -672,7 +672,7 @@
 
   /* Заголовок */
   .rc-header {
-    background: #fff;
+    background: #f4f4f4; /* <-- ИЗМЕНЕНО 2: Шапка другого светлого цвета */
     padding: 16px 20px;
     border-bottom: 1px solid var(--rc-border);
     display: flex;
@@ -690,11 +690,12 @@
   .rc-close {
     background: none;
     border: none;
-    color: #999;
+    color: #666;
     cursor: pointer;
     font-size: 1.5rem;
     line-height: 1;
   }
+  .rc-close:hover { color: #000; }
 
   /* Сообщения */
   .rc-messages {
@@ -750,7 +751,7 @@
   .rc-input {
     flex: 1;
     background: #f9f9f9;
-    border: 1px solid var(--rc-border);
+    border: 1px solid #ddd;
     color: var(--rc-text);
     padding: 10px 14px;
     border-radius: 20px;
@@ -808,7 +809,6 @@
 </div>
 
 <script>
-  // URL вашего Worker
   const WORKER_URL = 'https://rise-chat.smanolii.workers.dev'; 
 
   const widget = document.getElementById('rise-chat-widget');
@@ -873,6 +873,16 @@
 
   sendBtn.addEventListener('click', sendMessage);
   input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+  // ==========================================
+  // ИЗМЕНЕНИЕ 1: АВТООТКРЫТИЕ ЧЕРЕЗ 15 СЕКУНД
+  // ==========================================
+  setTimeout(() => {
+    // Проверяем, не открыт ли чат вручную
+    if (!chatWindow.classList.contains('open')) {
+      chatWindow.classList.add('open');
+    }
+  }, 15000); // 15000 миллисекунд = 15 секунд
 </script>
 
 </body>
