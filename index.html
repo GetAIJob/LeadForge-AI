@@ -604,18 +604,19 @@
     </script>
 	
 	<!-- ==========================================
-     RISE CHAT WIDGET CODE
-     Insert before </body> tag
+     UPDATED RISE CHAT WIDGET (LIGHT THEME)
 ========================================== -->
 
 <style>
-  /* CSS Стили виджета */
+  /* CSS Стили (Светлая тема) */
   #rise-chat-widget {
-    --rc-bg: #0E0D0B;
-    --rc-card: #1A1814;
-    --rc-gold: #C9A97A;
-    --rc-text: #F0EAE0;
-    --rc-border: #2A2520;
+    --rc-bg: #ffffff;
+    --rc-card: #f4f4f4; /* Светло-серый фон карточки */
+    --rc-gold: #C9A97A; /* Оставляем фирменный золотой */
+    --rc-text: #333333;
+    --rc-border: #e0e0e0;
+    --rc-user-bubble: #C9A97A;
+    --rc-user-text: #ffffff;
     
     font-family: 'Lato', sans-serif;
     position: fixed;
@@ -642,16 +643,8 @@
     border: none;
   }
 
-  #rc-toggle-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(201, 169, 122, 0.6);
-  }
-
-  #rc-toggle-btn svg {
-    width: 28px;
-    height: 28px;
-    fill: #0E0D0B;
-  }
+  #rc-toggle-btn:hover { transform: scale(1.05); }
+  #rc-toggle-btn svg { width: 28px; height: 28px; fill: #fff; }
 
   /* Окно чата */
   #rc-chat-window {
@@ -660,7 +653,7 @@
     background: var(--rc-bg);
     border: 1px solid var(--rc-border);
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -677,9 +670,9 @@
     transform: translateY(0);
   }
 
-  /* Заголовок чата */
+  /* Заголовок */
   .rc-header {
-    background: var(--rc-card);
+    background: #fff;
     padding: 16px 20px;
     border-bottom: 1px solid var(--rc-border);
     display: flex;
@@ -697,16 +690,13 @@
   .rc-close {
     background: none;
     border: none;
-    color: var(--rc-text);
+    color: #999;
     cursor: pointer;
-    font-size: 1.2rem;
-    opacity: 0.6;
-    transition: opacity 0.2s;
+    font-size: 1.5rem;
+    line-height: 1;
   }
 
-  .rc-close:hover { opacity: 1; }
-
-  /* Область сообщений */
+  /* Сообщения */
   .rc-messages {
     flex: 1;
     padding: 20px;
@@ -714,17 +704,13 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    background: #fafafa;
   }
 
-  /* Скроллбар */
-  .rc-messages::-webkit-scrollbar { width: 6px; }
-  .rc-messages::-webkit-scrollbar-thumb { background: var(--rc-border); border-radius: 3px; }
-
-  /* Сообщение */
   .rc-msg {
     max-width: 85%;
-    padding: 10px 14px;
-    border-radius: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
     font-size: 0.9rem;
     line-height: 1.5;
     word-wrap: break-word;
@@ -734,46 +720,43 @@
     background: var(--rc-card);
     color: var(--rc-text);
     align-self: flex-start;
-    border: 1px solid var(--rc-border);
     border-bottom-left-radius: 2px;
   }
 
   .rc-msg.user {
-    background: var(--rc-gold);
-    color: #0E0D0B;
+    background: var(--rc-user-bubble);
+    color: var(--rc-user-text);
     align-self: flex-end;
     border-bottom-right-radius: 2px;
     font-weight: 500;
   }
 
-  /* Индикатор печати */
   .rc-typing {
     font-size: 0.75rem;
-    color: var(--rc-gold);
+    color: #888;
     margin-left: 10px;
     display: none;
   }
 
-  /* Область ввода */
+  /* Ввод */
   .rc-input-area {
     padding: 16px;
     border-top: 1px solid var(--rc-border);
     display: flex;
     gap: 10px;
-    background: var(--rc-bg);
+    background: #fff;
   }
 
   .rc-input {
     flex: 1;
-    background: var(--rc-card);
+    background: #f9f9f9;
     border: 1px solid var(--rc-border);
     color: var(--rc-text);
     padding: 10px 14px;
-    border-radius: 6px;
+    border-radius: 20px;
     outline: none;
     font-family: inherit;
   }
-
   .rc-input:focus { border-color: var(--rc-gold); }
 
   .rc-send {
@@ -781,62 +764,52 @@
     border: none;
     width: 40px;
     height: 40px;
-    border-radius: 6px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
   }
-
-  .rc-send:hover { background: #E8D5B0; }
-  .rc-send svg { width: 18px; height: 18px; fill: #0E0D0B; }
+  .rc-send svg { width: 18px; height: 18px; fill: #fff; }
 
   @media (max-width: 480px) {
-    #rc-chat-window { width: 300px; height: 450px; right: 0; bottom: 0; border-radius: 12px 12px 0 0; }
-    #rise-chat-widget { bottom: 0; right: 0; padding: 10px; pointer-events: none; }
-    #rc-toggle-btn { pointer-events: auto; }
-    #rc-chat-window { margin-bottom: 0; }
+    #rc-chat-window { width: 100%; height: 100%; right: 0; bottom: 0; border-radius: 0; }
+    #rise-chat-widget { width: 100%; height: 100%; bottom: 0; right: 0; pointer-events: none; }
+    #rc-toggle-btn { pointer-events: auto; position: absolute; bottom: 20px; right: 20px; }
   }
 </style>
 
 <div id="rise-chat-widget">
-  <!-- Окно чата -->
   <div id="rc-chat-window">
     <div class="rc-header">
       <span class="rc-title">RiseSite Lab Assistant</span>
-      <button class="rc-close" id="rc-close">×</button>
+      <button class="rc-close" id="rc-close">&times;</button>
     </div>
     
     <div class="rc-messages" id="rc-messages">
       <div class="rc-msg bot">
-        Bonjour ! 👋 Je suis l'assistant de RiseSite Lab. Je peux vous aider à choisir un site pour votre business ?
+        Hello! I am your RiseSite Lab assistant. Ask me anything about our services! 🚀
       </div>
     </div>
     
-    <div class="rc-typing" id="rc-typing">RiseSite écrit...</div>
+    <div class="rc-typing" id="rc-typing">RiseSite is typing...</div>
 
     <div class="rc-input-area">
-      <input type="text" class="rc-input" id="rc-input" placeholder="Écrivez votre message...">
+      <input type="text" class="rc-input" id="rc-input" placeholder="Type your message...">
       <button class="rc-send" id="rc-send">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
       </button>
     </div>
   </div>
 
-  <!-- Кнопка -->
   <button id="rc-toggle-btn">
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
   </button>
 </div>
 
 <script>
-  // ==========================================
-  // JS LOGIC
-  // ==========================================
-  
-  // ВСТАВЬТЕ СЮДА URL ВАШЕГО CLOUDFLARE WORKER
-  const WORKER_URL = 'https://rise-chat.smanolii.workers.dev/'; 
+  // URL вашего Worker
+  const WORKER_URL = 'https://rise-chat.smanolii.workers.dev'; 
 
   const widget = document.getElementById('rise-chat-widget');
   const toggleBtn = document.getElementById('rc-toggle-btn');
@@ -849,41 +822,31 @@
 
   let messageHistory = [];
 
-  // Открыть/Закрыть
-  function toggleChat() {
-    chatWindow.classList.toggle('open');
-  }
+  function toggleChat() { chatWindow.classList.toggle('open'); }
   toggleBtn.addEventListener('click', toggleChat);
   closeBtn.addEventListener('click', toggleChat);
 
-  // Добавить сообщение в UI
   function appendMessage(text, sender) {
     const div = document.createElement('div');
     div.className = `rc-msg ${sender}`;
-    div.innerText = text; // innerText защищает от XSS
+    div.innerText = text;
     messagesContainer.appendChild(div);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
-  // Отправка сообщения
   async function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
 
-    // 1. Показать сообщение пользователя
     appendMessage(text, 'user');
     input.value = '';
-    
-    // Добавляем в историю
     messageHistory.push({ role: "user", content: text });
 
-    // 2. Показать индикатор печати
     typingIndicator.style.display = 'block';
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
     sendBtn.disabled = true;
 
     try {
-      // 3. Запрос к Worker
       const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -891,8 +854,6 @@
       });
 
       const data = await response.json();
-
-      // 4. Скрыть индикатор и показать ответ
       typingIndicator.style.display = 'none';
       sendBtn.disabled = false;
 
@@ -900,21 +861,18 @@
         appendMessage(data.reply, 'bot');
         messageHistory.push({ role: "assistant", content: data.reply });
       } else {
-        appendMessage("Désolé, une erreur s'est produite. Réessayez plus tard.", 'bot');
+        appendMessage("Sorry, error.", 'bot');
       }
-
     } catch (error) {
       console.error(error);
       typingIndicator.style.display = 'none';
       sendBtn.disabled = false;
-      appendMessage("Erreur de connexion.", 'bot');
+      appendMessage("Connection error.", 'bot');
     }
   }
 
   sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
-  });
+  input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
 </script>
 
 </body>
