@@ -602,6 +602,320 @@
             });
         });
     </script>
+	
+	<!-- ==========================================
+     RISE CHAT WIDGET CODE
+     Insert before </body> tag
+========================================== -->
+
+<style>
+  /* CSS Стили виджета */
+  #rise-chat-widget {
+    --rc-bg: #0E0D0B;
+    --rc-card: #1A1814;
+    --rc-gold: #C9A97A;
+    --rc-text: #F0EAE0;
+    --rc-border: #2A2520;
+    
+    font-family: 'Lato', sans-serif;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* Кнопка чата */
+  #rc-toggle-btn {
+    width: 60px;
+    height: 60px;
+    background: var(--rc-gold);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(201, 169, 122, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+  }
+
+  #rc-toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(201, 169, 122, 0.6);
+  }
+
+  #rc-toggle-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: #0E0D0B;
+  }
+
+  /* Окно чата */
+  #rc-chat-window {
+    width: 350px;
+    height: 500px;
+    background: var(--rc-bg);
+    border: 1px solid var(--rc-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+  }
+
+  #rc-chat-window.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  /* Заголовок чата */
+  .rc-header {
+    background: var(--rc-card);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--rc-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rc-title {
+    color: var(--rc-gold);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+
+  .rc-close {
+    background: none;
+    border: none;
+    color: var(--rc-text);
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .rc-close:hover { opacity: 1; }
+
+  /* Область сообщений */
+  .rc-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Скроллбар */
+  .rc-messages::-webkit-scrollbar { width: 6px; }
+  .rc-messages::-webkit-scrollbar-thumb { background: var(--rc-border); border-radius: 3px; }
+
+  /* Сообщение */
+  .rc-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  .rc-msg.bot {
+    background: var(--rc-card);
+    color: var(--rc-text);
+    align-self: flex-start;
+    border: 1px solid var(--rc-border);
+    border-bottom-left-radius: 2px;
+  }
+
+  .rc-msg.user {
+    background: var(--rc-gold);
+    color: #0E0D0B;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    font-weight: 500;
+  }
+
+  /* Индикатор печати */
+  .rc-typing {
+    font-size: 0.75rem;
+    color: var(--rc-gold);
+    margin-left: 10px;
+    display: none;
+  }
+
+  /* Область ввода */
+  .rc-input-area {
+    padding: 16px;
+    border-top: 1px solid var(--rc-border);
+    display: flex;
+    gap: 10px;
+    background: var(--rc-bg);
+  }
+
+  .rc-input {
+    flex: 1;
+    background: var(--rc-card);
+    border: 1px solid var(--rc-border);
+    color: var(--rc-text);
+    padding: 10px 14px;
+    border-radius: 6px;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .rc-input:focus { border-color: var(--rc-gold); }
+
+  .rc-send {
+    background: var(--rc-gold);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .rc-send:hover { background: #E8D5B0; }
+  .rc-send svg { width: 18px; height: 18px; fill: #0E0D0B; }
+
+  @media (max-width: 480px) {
+    #rc-chat-window { width: 300px; height: 450px; right: 0; bottom: 0; border-radius: 12px 12px 0 0; }
+    #rise-chat-widget { bottom: 0; right: 0; padding: 10px; pointer-events: none; }
+    #rc-toggle-btn { pointer-events: auto; }
+    #rc-chat-window { margin-bottom: 0; }
+  }
+</style>
+
+<div id="rise-chat-widget">
+  <!-- Окно чата -->
+  <div id="rc-chat-window">
+    <div class="rc-header">
+      <span class="rc-title">RiseSite Lab Assistant</span>
+      <button class="rc-close" id="rc-close">×</button>
+    </div>
+    
+    <div class="rc-messages" id="rc-messages">
+      <div class="rc-msg bot">
+        Bonjour ! 👋 Je suis l'assistant de RiseSite Lab. Je peux vous aider à choisir un site pour votre business ?
+      </div>
+    </div>
+    
+    <div class="rc-typing" id="rc-typing">RiseSite écrit...</div>
+
+    <div class="rc-input-area">
+      <input type="text" class="rc-input" id="rc-input" placeholder="Écrivez votre message...">
+      <button class="rc-send" id="rc-send">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Кнопка -->
+  <button id="rc-toggle-btn">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+  </button>
+</div>
+
+<script>
+  // ==========================================
+  // JS LOGIC
+  // ==========================================
+  
+  // ВСТАВЬТЕ СЮДА URL ВАШЕГО CLOUDFLARE WORKER
+  const WORKER_URL = 'https://rise-chat.smanolii.workers.dev/'; 
+
+  const widget = document.getElementById('rise-chat-widget');
+  const toggleBtn = document.getElementById('rc-toggle-btn');
+  const chatWindow = document.getElementById('rc-chat-window');
+  const closeBtn = document.getElementById('rc-close');
+  const messagesContainer = document.getElementById('rc-messages');
+  const input = document.getElementById('rc-input');
+  const sendBtn = document.getElementById('rc-send');
+  const typingIndicator = document.getElementById('rc-typing');
+
+  let messageHistory = [];
+
+  // Открыть/Закрыть
+  function toggleChat() {
+    chatWindow.classList.toggle('open');
+  }
+  toggleBtn.addEventListener('click', toggleChat);
+  closeBtn.addEventListener('click', toggleChat);
+
+  // Добавить сообщение в UI
+  function appendMessage(text, sender) {
+    const div = document.createElement('div');
+    div.className = `rc-msg ${sender}`;
+    div.innerText = text; // innerText защищает от XSS
+    messagesContainer.appendChild(div);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Отправка сообщения
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    // 1. Показать сообщение пользователя
+    appendMessage(text, 'user');
+    input.value = '';
+    
+    // Добавляем в историю
+    messageHistory.push({ role: "user", content: text });
+
+    // 2. Показать индикатор печати
+    typingIndicator.style.display = 'block';
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    sendBtn.disabled = true;
+
+    try {
+      // 3. Запрос к Worker
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: messageHistory })
+      });
+
+      const data = await response.json();
+
+      // 4. Скрыть индикатор и показать ответ
+      typingIndicator.style.display = 'none';
+      sendBtn.disabled = false;
+
+      if (data.reply) {
+        appendMessage(data.reply, 'bot');
+        messageHistory.push({ role: "assistant", content: data.reply });
+      } else {
+        appendMessage("Désolé, une erreur s'est produite. Réessayez plus tard.", 'bot');
+      }
+
+    } catch (error) {
+      console.error(error);
+      typingIndicator.style.display = 'none';
+      sendBtn.disabled = false;
+      appendMessage("Erreur de connexion.", 'bot');
+    }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
 
 </body>
 </html>
